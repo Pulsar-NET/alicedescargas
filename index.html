@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exploits</title>
+  <link rel="icon" href="Icon.png" type="image/x-icon">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #eee;
+    }
+
+    html, body {
+      min-height: 100%;
+      background-color: #111;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: #111;
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+      margin: 30px auto 60px auto;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 0, 150, 0.5);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #ff0099;
+      flex-shrink: 0;
+      background: #222;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    h1 {
+      flex-grow: 1;
+      font-size: 2rem;
+      color: #ff33aa;
+      text-shadow: 0 0 8px #ff33aa;
+    }
+
+    .discord-link {
+      font-weight: bold;
+      color: #7289da;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      border: 2px solid #7289da;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+      white-space: nowrap;
+    }
+
+    .discord-link:hover {
+      background-color: #7289da;
+      color: #fff;
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    section h2 {
+      color: #ff33aa;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #ff33aa;
+      font-size: 1.8rem;
+    }
+
+    .executor-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .executor-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 0 8px #ff33aa33;
+      transition: background-color 0.3s ease;
+    }
+
+    .executor-item:hover {
+      background: rgba(255, 51, 170, 0.2);
+    }
+
+    .executor-icon {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1.5px solid #ff33aa;
+    }
+
+    .executor-icon img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .executor-name {
+      flex-grow: 1;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #ff77bb;
+      text-shadow: 0 0 5px #ff33aaaa;
+    }
+
+    .download-btn {
+      background-color: #ff33aa;
+      border: none;
+      color: white;
+      padding: 10px 18px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .download-btn:hover {
+      background-color: #ff66cc;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        text-align: center;
+      }
+
+      .discord-link {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 1rem;
+      }
+
+      section {
+        margin-top: 30px;
+        padding: 0 10px;
+      }
+
+      .executor-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .executor-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .executor-name {
+        font-size: 1.1rem;
+      }
+
+      .download-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        margin-top: 10px;
+      }
+
+      .container {
+        margin: 20px 10px 40px 10px;
+        padding: 15px;
+      }
+    }
+
+    /* Efecto de aparición por scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="container">
+    <header>
+      <div class="logo" title="Alice">
+        <img src="Yoop.jpg" alt="yo" />
+      </div>
+      <h1>Descargas Alice</h1>
+      <a href="https://discord.gg/UEkejW2g" target="_blank" rel="noopener" class="discord-link">Contáctame por Discord</a>
+    </header>
+
+    <section class="reveal">
+      <h2>Ejecutores para Android</h2>
+      <ul class="executor-list">
+        <li class="executor-item reveal">
+          <div class="executor-icon">
+            <img src="https://media.cdnandroid.com/item_images/1453517/imagen-delta-executor-0ori.jpg" alt="Delta Executor" />
+          </div>
+          <span class="executor-name">Delta</span>
+          <a href="https://www.mediafire.com/file/raqzmzzrw5y3rp8/Delta-2.684.688-01.apk/file" target="_blank" class="download-btn">Descargar</a>
+        </li>
+        <li class="executor-item reveal">
+          <div class="executor-icon">
+            <img src="Ronix.png" alt="Ronix Android" />
+          </div>
+          <span class="executor-name">Ronix Android</span>
+          <a href="https://www.mediafire.com/file/fv1cqkzjp1t5by6/Ronix_Android.apk/file" target="_blank" class="download-btn">Descargar</a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Ejecutores para PC</h2>
+      <ul class="executor-list">
+        <li class="executor-item reveal">
+          <div class="executor-icon">
+            <img src="xeno.png" alt="Xeno" />
+          </div>
+          <span class="executor-name">Xeno</span>
+          <a href="https://www.xeno.onl/download" target="_blank" class="download-btn">Descargar</a>
+        </li>
+
+        <li class="executor-item reveal">
+          <div class="executor-icon">
+            <img src="VE-V1Ng0ZKMhv1zAoKSZKf9nRqgrtTKbmvYIU0tPsfGrqt7fwjtnyGvX-0nDZ3P3Ct41Meyq1f2-YOztOGEBn9OJuO1XrpaXXmDHbLf40rGXO91OI_w8LvsjfGC9baiaFDlv5kY8oR_u56KclpmrxnvN3m-tLy0p8Tv5roVVz57x6CMHtM3OYYVQ6-zEbHLLEXYQSym1UGPMGSyAwvNWrm.jpg" alt="Swift" />
+          </div>
+          <span class="executor-name">Swift</span>
+          <a href="https://getswift.vip/" target="_blank" class="download-btn">Descargar</a>
+        </li>
+
+        <li class="executor-item reveal">
+          <div class="executor-icon">
+            <img src="Ronix.png" alt="Ronix PC" />
+          </div>
+          <span class="executor-name">Ronix PC</span>
+          <a href="https://www.mediafire.com/file/xvwyh31sm7ruudl/Ronix_PC.zip/file" target="_blank" class="download-btn">Descargar</a>
+        </li>
+
+        <li class="executor-item reveal">
+          <div class="executor-icon">
+            <img src="Solara.png" alt="Solara" />
+          </div>
+          <span class="executor-name">Solara</span>
+          <a href="https://www.mediafire.com/file/knhn6k6p2andg05/Bootstrapper_v2.23.zip/file" target="_blank" class="download-btn">Descargar</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particlesArray;
+
+    function initCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 1.5;
+        this.speedY = (Math.random() - 0.5) * 1.5;
+        this.color = `rgba(255, 20, 147, ${Math.random() * 0.7 + 0.3})`;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > width) this.speedX *= -1;
+        if (this.y < 0 || this.y > height) this.speedY *= -1;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 8;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      const maxParticles = 80;
+      const calculated = Math.floor((width * height) / 12000);
+      const numberOfParticles = Math.min(maxParticles, calculated);
+      for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function connectParticles() {
+      let maxDistance = 80;
+      for (let a = 0; a < particlesArray.length; a++) {
+        let connections = 0;
+        for (let b = a + 1; b < particlesArray.length; b++) {
+          if (connections >= 3) break;
+          let dx = particlesArray[a].x - particlesArray[b].x;
+          let dy = particlesArray[a].y - particlesArray[b].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < maxDistance) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255, 20, 147, ${1 - distance / maxDistance})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+            ctx.closePath();
+            connections++;
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particlesArray.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      connectParticles();
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      initCanvas();
+      initParticles();
+    });
+
+    initCanvas();
+    initParticles();
+    animate();
+
+    // Scroll Reveal con corrección para que funcione siempre
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Eliminar clase visible para que la animación se pueda repetir al recargar
+    document.querySelectorAll('.reveal').forEach(el => el.classList.remove('visible'));
+
+    // Observar elementos para animación scroll
+    document.querySelectorAll('.reveal').forEach(elem => {
+      observer.observe(elem);
+    });
+  </script>
+</body>
+</html>
