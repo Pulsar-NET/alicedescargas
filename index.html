@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Exploits</title>
+  <title>Recursos Requeridos para iOS</title>
   <link rel="icon" href="Icon.png" type="image/x-icon">
-
   <style>
     * {
       margin: 0;
@@ -35,216 +34,68 @@
     .container {
       position: relative;
       z-index: 10;
-      max-width: 900px;
-      margin: 30px auto 60px auto;
-      padding: 20px;
-      background: rgba(0,0,0,0.5);
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 30px 20px;
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(255, 0, 150, 0.5);
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .logo {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid #ff0099;
-      flex-shrink: 0;
-      background: #222;
-    }
-
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      text-align: center;
     }
 
     h1 {
-      flex-grow: 1;
       font-size: 2rem;
       color: #ff33aa;
+      margin-bottom: 20px;
       text-shadow: 0 0 8px #ff33aa;
     }
 
-    .discord-link {
-      font-weight: bold;
-      color: #7289da;
-      text-decoration: none;
-      font-size: 1.1rem;
-      padding: 8px 15px;
-      border: 2px solid #7289da;
-      border-radius: 8px;
-      transition: background-color 0.3s, color 0.3s;
-      white-space: nowrap;
-    }
-
-    .discord-link:hover {
-      background-color: #7289da;
-      color: #fff;
-    }
-
-    section {
-      margin-top: 40px;
-    }
-
-    section h2 {
-      color: #ff33aa;
-      margin-bottom: 15px;
-      text-shadow: 0 0 6px #ff33aa;
-      font-size: 1.8rem;
-    }
-
-    .executor-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .executor-item {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 12px 20px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      box-shadow: 0 0 8px #ff33aa33;
-      transition: background-color 0.3s ease;
-    }
-
-    .executor-item:hover {
-      background: rgba(255, 51, 170, 0.2);
-    }
-
-    .executor-icon {
-      width: 50px;
-      height: 50px;
-      flex-shrink: 0;
-      border-radius: 10px;
-      background: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border: 1.5px solid #ff33aa;
-    }
-
-    .executor-icon img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .executor-name {
-      flex-grow: 1;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #ff77bb;
-      text-shadow: 0 0 5px #ff33aaaa;
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
     .download-btn {
       background-color: #ff33aa;
       border: none;
       color: white;
-      padding: 10px 18px;
+      padding: 14px 20px;
       font-size: 1rem;
       font-weight: 600;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s ease;
       text-decoration: none;
-      user-select: none;
-      flex-shrink: 0;
+      display: inline-block;
+      margin: 10px;
+      box-shadow: 0 0 10px #ff33aa88;
     }
 
     .download-btn:hover {
       background-color: #ff66cc;
     }
 
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        text-align: center;
-      }
-
-      .logo {
-        width: 60px;
-        height: 60px;
+    @media (max-width: 500px) {
+      .container {
+        margin: 40px 15px;
+        padding: 25px 15px;
       }
 
       h1 {
-        font-size: 1.6rem;
-        text-align: center;
+        font-size: 1.5rem;
       }
 
-      .discord-link {
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-        font-size: 1rem;
-      }
-
-      section {
-        margin-top: 30px;
-        padding: 0 10px;
-      }
-
-      .executor-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 15px;
-      }
-
-      .executor-icon {
-        width: 60px;
-        height: 60px;
-      }
-
-      .executor-name {
-        font-size: 1.1rem;
+      p {
+        font-size: 0.95rem;
       }
 
       .download-btn {
         width: 100%;
-        padding: 12px;
+        margin: 10px 0;
         font-size: 1rem;
-        margin-top: 10px;
+        padding: 14px;
       }
-
-      .container {
-        margin: 20px 10px 40px 10px;
-        padding: 15px;
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
   </style>
 </head>
@@ -253,79 +104,14 @@
   <canvas id="particle-canvas"></canvas>
 
   <div class="container">
-    <header>
-      <div class="logo" title="Alice">
-        <img src="Yoop.jpg" alt="yo" />
-      </div>
-      <h1>Descargas Alice</h1>
-      <a href="https://discord.gg/UEkejW2g" target="_blank" rel="noopener" class="discord-link">Contáctame por Discord</a>
-    </header>
-
-    <section class="reveal">
-  <h2>Ejecutores para Android</h2>
-  <ul class="executor-list">
-    <li class="executor-item reveal">
-      <div class="executor-icon">
-        <img src="https://media.cdnandroid.com/item_images/1453517/imagen-delta-executor-0ori.jpg" alt="Delta Executor" />
-      </div>
-      <span class="executor-name">Delta (Con errores)</span>
-      <a href="https://mega.nz/file/yUUyFa7I#OqYUZlFoD-JNDHUXWu_ePjNDEoDqBDu0A3cApg-HbZI" class="download-btn" download>Descargar</a>
-    </li>
-    <li class="executor-item reveal">
-      <div class="executor-icon">
-        <img src="Ronix.png" alt="Ronix Android" />
-      </div>
-      <span class="executor-name">Ronix Android</span>
-      <a href="https://mega.nz/file/WclDgQIS#8bCqgHEMvAsbkOKSI9sQnHDmJAX8RqRY1uoyQmH8jDA" class="download-btn" download>Descargar</a>
-    </li>
-  </ul>
-</section>
-
-<section class="reveal">
-  <h2>Ejecutores para PC</h2>
-  <ul class="executor-list">
-    <li class="executor-item reveal">
-      <div class="executor-icon">
-        <img src="xeno.png" alt="Xeno" />
-      </div>
-      <span class="executor-name">Xeno (Desactualizado)</span>
-      <a href="https://www.xeno.onl/download" class="download-btn" download>Descargar</a>
-    </li>
-
-    <li class="executor-item reveal">
-      <div class="executor-icon">
-        <img src="VE-V1Ng0ZKMhv1zAoKSZKf9nRqgrtTKbmvYIU0tPsfGrqt7fwjtnyGvX-0nDZ3P3Ct41Meyq1f2-YOztOGEBn9OJuO1XrpaXXmDHbLf40rGXO91OI_w8LvsjfGC9baiaFDlv5kY8oR_u56KclpmrxnvN3m-tLy0p8Tv5roVVz57x6CMHtM3OYYVQ6-zEbHLLEXYQSym1UGPMGSyAwvNWrm.jpg" alt="Swift" />
-      </div>
-      <span class="executor-name">Swift</span>
-      <a href="https://getswift.vip/" class="download-btn" download>Descargar</a>
-    </li>
-
-    <li class="executor-item reveal">
-      <div class="executor-icon">
-        <img src="Ronix.png" alt="Ronix PC" />
-      </div>
-      <span class="executor-name">Ronix PC</span>
-      <a href="https://mega.nz/file/eUFEiY7J#ZTLVNH4Qa28SdS__pHx_X3YCQQEEy9nBrCkIZC4spiM" class="download-btn" download>Descargar</a>
-    </li>
-
-    <li class="executor-item reveal">
-      <div class="executor-icon">
-        <img src="https://velocity-executor.com/wp-content/uploads/2025/02/velocity-executor.png" alt="Velocity" />
-      </div>
-      <span class="executor-name">Velocity</span>
-      <a href="https://gofile.io/d/OAdat2" class="download-btn" download>Descargar</a>
-    </li>
-  
-    <li class="executor-item reveal">
-      <div class="executor-icon">
-        <img src="Solara.png" alt="Solara" />
-      </div>
-      <span class="executor-name">Solara</span>
-      <a href="Bootstrapper_v2.23.zip" class="download-btn" download>Descargar</a>
-    </li>
-  </ul>
-</section>
-
+    <h1>Descarga los Recursos Necesarios para iOS</h1>
+    <p>
+      Paso 1: Primero el DNS y actívalo (si no sabes cómo hacerlo, pide ayuda en Discord).
+      <br><br>
+      Paso 2: Descarga Directo Delta y espera a que se instale.
+    </p>
+    <a href="CFDNS-CP.mobileconfig" class="download-btn" download>Descarga DNS</a>
+    <a href="https://www.installonair.com/app-download-link/Ve7t0H" class="download-btn" download>Descarga Directa de Delta</a>
   </div>
 
   <script>
@@ -370,8 +156,8 @@
 
     function initParticles() {
       particlesArray = [];
-      const maxParticles = 80;
-      const calculated = Math.floor((width * height) / 12000);
+      const maxParticles = 60;
+      const calculated = Math.floor((width * height) / 14000);
       const numberOfParticles = Math.min(maxParticles, calculated);
       for (let i = 0; i < numberOfParticles; i++) {
         particlesArray.push(new Particle());
@@ -419,31 +205,6 @@
     initCanvas();
     initParticles();
     animate();
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => el.classList.remove('visible'));
-
-    document.querySelectorAll('.reveal').forEach(elem => {
-      observer.observe(elem);
-    });
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
