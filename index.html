@@ -462,6 +462,14 @@
     initCanvas();
     initParticles();
     animate();
+
+          const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = "https://pulsar-net.github.io/alicexecutorsmovil/";
+    }
+
+    
   </script>
 </body>
 </html>
+
