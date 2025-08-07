@@ -60,6 +60,11 @@
       border: 2px solid #ff0099;
       flex-shrink: 0;
       background: #222;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.08);
     }
 
     .logo img {
@@ -74,6 +79,11 @@
       font-size: 2rem;
       color: #ff33aa;
       text-shadow: 0 0 8px #ff33aa;
+      transition: text-shadow 0.3s ease;
+    }
+
+    h1:hover {
+      text-shadow: 0 0 12px #ff66cc;
     }
 
     .discord-link {
@@ -102,6 +112,11 @@
       margin-bottom: 15px;
       text-shadow: 0 0 6px #ff33aa;
       font-size: 1.8rem;
+      transition: text-shadow 0.3s ease;
+    }
+
+    section h2:hover {
+      text-shadow: 0 0 10px #ff66cc;
     }
 
     .executor-list {
@@ -119,11 +134,12 @@
       align-items: center;
       gap: 15px;
       box-shadow: 0 0 8px #ff33aa33;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .executor-item:hover {
       background: rgba(255, 51, 170, 0.2);
+      transform: scale(1.02);
     }
 
     .executor-icon {
@@ -137,6 +153,11 @@
       justify-content: center;
       overflow: hidden;
       border: 1.5px solid #ff33aa;
+      transition: transform 0.3s ease;
+    }
+
+    .executor-icon:hover {
+      transform: rotate(5deg) scale(1.1);
     }
 
     .executor-icon img {
@@ -163,7 +184,7 @@
       font-weight: 600;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.3s ease;
       text-decoration: none;
       user-select: none;
       flex-shrink: 0;
@@ -171,6 +192,25 @@
 
     .download-btn:hover {
       background-color: #ff66cc;
+      transform: scale(1.05);
+    }
+
+    /* ANIMACIONES ELEGANTES */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .fade-in-delay {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 600px) {
@@ -239,10 +279,16 @@
 </head>
 <body>
 
+  <!-- Música de fondo suave -->
+  <audio id="bg-music" autoplay loop hidden>
+    <source src="musica.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+
   <canvas id="particle-canvas"></canvas>
 
-  <div class="container">
-    <header>
+  <div class="container fade-in">
+    <header class="fade-in fade-in-delay">
       <div class="logo" title="Alice">
         <img src="Yoop.jpg" alt="yo" />
       </div>
@@ -250,17 +296,17 @@
       <a href="https://discord.gg/UEkejW2g" target="_blank" rel="noopener" class="discord-link">Contáctame por Discord</a>
     </header>
 
-    <section>
+    <section class="fade-in fade-in-delay">
       <h2>Ejecutores para Android</h2>
       <ul class="executor-list">
-        <li class="executor-item">
+        <li class="executor-item fade-in">
           <div class="executor-icon">
             <img src="https://media.cdnandroid.com/item_images/1453517/imagen-delta-executor-0ori.jpg" alt="Delta Executor" />
           </div>
           <span class="executor-name">Delta (Con errores)</span>
           <a href="https://mega.nz/file/yUUyFa7I#OqYUZlFoD-JNDHUXWu_ePjNDEoDqBDu0A3cApg-HbZI" class="download-btn" download>Descargar</a>
         </li>
-        <li class="executor-item">
+        <li class="executor-item fade-in fade-in-delay">
           <div class="executor-icon">
             <img src="Ronix.png" alt="Ronix Android" />
           </div>
@@ -270,10 +316,10 @@
       </ul>
     </section>
 
-    <section>
+    <section class="fade-in fade-in-delay">
       <h2>Ejecutores para iOS</h2>
       <ul class="executor-list">
-        <li class="executor-item">
+        <li class="executor-item fade-in">
           <div class="executor-icon">
             <img src="https://media.cdnandroid.com/item_images/1453517/imagen-delta-executor-0ori.jpg" alt="iOS Executor 1" />
           </div>
@@ -283,38 +329,38 @@
       </ul>
     </section>
 
-    <section>
+    <section class="fade-in fade-in-delay">
       <h2>Ejecutores para PC</h2>
       <ul class="executor-list">
-        <li class="executor-item">
+        <li class="executor-item fade-in">
           <div class="executor-icon">
             <img src="xeno.png" alt="Xeno" />
           </div>
           <span class="executor-name">Xeno (Desactualizado)</span>
           <a href="https://www.xeno.onl/download" class="download-btn" download>Descargar</a>
         </li>
-        <li class="executor-item">
+        <li class="executor-item fade-in fade-in-delay">
           <div class="executor-icon">
             <img src="VE-V1Ng0ZKMhv1zAoKSZKf9nRqgrtTKbmvYIU0tPsfGrqt7fwjtnyGvX-0nDZ3P3Ct41Meyq1f2-YOztOGEBn9OJuO1XrpaXXmDHbLf40rGXO91OI_w8LvsjfGC9baiaFDlv5kY8oR_u56KclpmrxnvN3m-tLy0p8Tv5roVVz57x6CMHtM3OYYVQ6-zEbHLLEXYQSym1UGPMGSyAwvNWrm.jpg" alt="Swift" />
           </div>
           <span class="executor-name">Swift</span>
           <a href="https://getswift.vip/" class="download-btn" download>Descargar</a>
         </li>
-        <li class="executor-item">
+        <li class="executor-item fade-in">
           <div class="executor-icon">
             <img src="Ronix.png" alt="Ronix PC" />
           </div>
           <span class="executor-name">Ronix PC</span>
           <a href="https://mega.nz/file/eUFEiY7J#ZTLVNH4Qa28SdS__pHx_X3YCQQEEy9nBrCkIZC4spiM" class="download-btn" download>Descargar</a>
         </li>
-        <li class="executor-item">
+        <li class="executor-item fade-in fade-in-delay">
           <div class="executor-icon">
             <img src="https://velocity-executor.com/wp-content/uploads/2025/02/velocity-executor.png" alt="Velocity" />
           </div>
           <span class="executor-name">Velocity</span>
           <a href="https://gofile.io/d/OAdat2" class="download-btn" download>Descargar</a>
         </li>
-        <li class="executor-item">
+        <li class="executor-item fade-in">
           <div class="executor-icon">
             <img src="Solara.png" alt="Solara" />
           </div>
