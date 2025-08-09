@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,7 +16,8 @@
       color: #eee;
     }
 
-    html, body {
+    html,
+    body {
       min-height: 100%;
       background-color: #111;
       overflow-x: hidden;
@@ -38,7 +40,7 @@
       max-width: 900px;
       margin: 30px auto 60px auto;
       padding: 20px;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(255, 0, 150, 0.5);
     }
@@ -277,46 +279,49 @@
     }
 
     .status-list {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid #ff33aa44;
-  padding: 15px 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(255, 0, 150, 0.3);
-  margin-bottom: 30px;
-}
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid #ff33aa44;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(255, 0, 150, 0.3);
+      margin-bottom: 30px;
+    }
 
-.status-list p {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1rem;
-  color: #eee;
-  margin: 6px 0;
-}
+    .status-list p {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      color: #eee;
+      margin: 6px 0;
+    }
 
-.status-circle {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  display: inline-block;
-}
+    .status-circle {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      display: inline-block;
+    }
 
-.status-circle.green { background-color: #4caf50; }
-.status-circle.purple { background-color: #9c27b0; }
-.status-circle.yellow { background-color: #ffc107; }
-.status-circle.red { background-color: #f44336; }
+    .status-circle.green {
+      background-color: #4caf50;
+    }
 
-    
+    .status-circle.purple {
+      background-color: #9c27b0;
+    }
+
+    .status-circle.yellow {
+      background-color: #ffc107;
+    }
+
+    .status-circle.red {
+      background-color: #f44336;
+    }
   </style>
 </head>
+
 <body>
-
-  <!-- Música de fondo suave -->
-  <audio id="bg-music" autoplay loop hidden>
-    <source src="IMPXSTR NASTY!.mp3" type="audio/mpeg" />
-    Tu navegador no soporta audio.
-  </audio>
-
   <canvas id="particle-canvas"></canvas>
 
 
@@ -326,41 +331,45 @@
         <img src="Yoop.jpg" alt="yo" />
       </div>
       <h1>Descargas Alice</h1>
-      <a href="https://discord.gg/UEkejW2g" target="_blank" rel="noopener" class="discord-link">Contáctame por Discord</a>
+      <a href="https://discord.gg/UEkejW2g" target="_blank" rel="noopener" class="discord-link">Contáctame por
+        Discord</a>
     </header>
 
-      <div class="status-list fade-in fade-in-delay">
-  <p><span class="status-circle green"></span> - FUNCIONANDO</p>
-  <p><span class="status-circle yellow"></span> - CON PROBLEMAS</p>
-  <p><span class="status-circle red"></span> - CAÍDO, ESPERA LA ACTUALIZACIÓN!</p>
-</div>
+    <div class="status-list fade-in fade-in-delay">
+      <p><span class="status-circle green"></span> - FUNCIONANDO</p>
+      <p><span class="status-circle yellow"></span> - CON PROBLEMAS</p>
+      <p><span class="status-circle red"></span> - CAÍDO, ESPERA LA ACTUALIZACIÓN!</p>
+    </div>
 
-<section class="fade-in fade-in-delay">
-  <h2>Ejecutores para Android</h2>
-  <ul class="executor-list">
-    <li class="executor-item fade-in">
+    <section class="fade-in fade-in-delay">
+      <h2>Ejecutores para Android</h2>
+      <ul class="executor-list">
+        <li class="executor-item fade-in">
 
-      <div class="executor-icon">
-        <img src="https://media.cdnandroid.com/item_images/1453517/imagen-delta-executor-0ori.jpg" alt="Delta Executor" />
-      </div>
-      <span class="executor-name">
-        Delta
-        <span class="status-circle green" title="WORKING"></span>
-      </span>
-      <a href"https://mega.nz/file/HMUGAYrQ#9MYcAxc0WKJ-RFYLj0kEwPj1mV5qdK0pG7lzjfE4B7k" download>Descargar</a>
-    </li>
-    <li class="executor-item fade-in fade-in-delay">
-      <div class="executor-icon">
-        <img src="Ronix.png" alt="Ronix Android" />
-      </div>
-      <span class="executor-name">
-        Ronix Android
-        <span class="status-circle green" title="WORKING"></span>
-      </span>
-      <a href="https://mega.nz/file/WclDgQIS#8bCqgHEMvAsbkOKSI9sQnHDmJAX8RqRY1uoyQmH8jDA" class="download-btn" download>Descargar</a>
-    </li>
-  </ul>
-</section>
+          <div class="executor-icon">
+            <img src="https://media.cdnandroid.com/item_images/1453517/imagen-delta-executor-0ori.jpg"
+              alt="Delta Executor" />
+          </div>
+          <span class="executor-name">
+            Delta
+            <span class="status-circle green" title="WORKING"></span>
+          </span>
+          <a href="https://mega.nz/file/HMUGAYrQ#9MYcAxc0WKJ-RFYLj0kEwPj1mV5qdK0pG7lzjfE4B7k" class="download-btn"
+            download>Descargar</a>
+        </li>
+        <li class="executor-item fade-in fade-in-delay">
+          <div class="executor-icon">
+            <img src="Ronix.png" alt="Ronix Android" />
+          </div>
+          <span class="executor-name">
+            Ronix Android
+            <span class="status-circle green" title="WORKING"></span>
+          </span>
+          <a href="https://mega.nz/file/WclDgQIS#8bCqgHEMvAsbkOKSI9sQnHDmJAX8RqRY1uoyQmH8jDA" class="download-btn"
+            download>Descargar</a>
+        </li>
+      </ul>
+    </section>
 
 
 
@@ -369,12 +378,13 @@
       <ul class="executor-list">
         <li class="executor-item fade-in">
           <div class="executor-icon">
-            <img src="https://media.cdnandroid.com/item_images/1453517/imagen-delta-executor-0ori.jpg" alt="iOS Executor 1" />
+            <img src="https://media.cdnandroid.com/item_images/1453517/imagen-delta-executor-0ori.jpg"
+              alt="iOS Executor 1" />
           </div>
-         <span class="executor-name">
-  Delta iOS (Requiere DNS)
-  <span class="status-circle green" title="WORKING"></span>
-</span>
+          <span class="executor-name">
+            Delta iOS (Requiere DNS)
+            <span class="status-circle green" title="WORKING"></span>
+          </span>
 
           <a href="https://pulsar-net.github.io/alicedescargas-iOS/" class="download-btn">Descargar</a>
         </li>
@@ -391,12 +401,14 @@
           <span class="executor-name">Xeno
             <span class="status-circle red"></span>
           </span>
-          
+
           <a href="https://www.xeno.onl/download" class="download-btn" download>Descargar</a>
         </li>
         <li class="executor-item fade-in fade-in-delay">
           <div class="executor-icon">
-            <img src="VE-V1Ng0ZKMhv1zAoKSZKf9nRqgrtTKbmvYIU0tPsfGrqt7fwjtnyGvX-0nDZ3P3Ct41Meyq1f2-YOztOGEBn9OJuO1XrpaXXmDHbLf40rGXO91OI_w8LvsjfGC9baiaFDlv5kY8oR_u56KclpmrxnvN3m-tLy0p8Tv5roVVz57x6CMHtM3OYYVQ6-zEbHLLEXYQSym1UGPMGSyAwvNWrm.jpg" alt="Swift" />
+            <img
+              src="VE-V1Ng0ZKMhv1zAoKSZKf9nRqgrtTKbmvYIU0tPsfGrqt7fwjtnyGvX-0nDZ3P3Ct41Meyq1f2-YOztOGEBn9OJuO1XrpaXXmDHbLf40rGXO91OI_w8LvsjfGC9baiaFDlv5kY8oR_u56KclpmrxnvN3m-tLy0p8Tv5roVVz57x6CMHtM3OYYVQ6-zEbHLLEXYQSym1UGPMGSyAwvNWrm.jpg"
+              alt="Swift" />
           </div>
           <span class="executor-name">
             Swift
@@ -409,7 +421,7 @@
             <img src="Ronix.png" alt="Ronix PC" />
           </div>
           <span class="executor-name">Ronix PC
-         <span class="status-circle green"></span>
+            <span class="status-circle green"></span>
 
           </span>
           <a href="https://gofile.io/d/8LUCGD" class="download-btn" download>Descargar</a>
@@ -528,15 +540,13 @@
     initParticles();
     animate();
 
-          const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     if (isMobile) {
       window.location.href = "https://pulsar-net.github.io/alicexecutorsmovil/";
     }
 
-    
+
   </script>
 </body>
+
 </html>
-
-
-
